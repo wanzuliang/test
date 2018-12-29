@@ -11,12 +11,3 @@ WEB
 
 Server
 
-
-CCCCC
-
-
-NNNNN
-
-
-
-
