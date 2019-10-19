@@ -18,7 +18,7 @@ func main() {
 	// T := sort_insert(&list)
 	T := sort_bubble(&list)
 	// T := sort_select(&list)
-	// T := sort_mege(&list)
+	// T := sort_shell(&list)
 	
 	fmt.Println(T)
 
@@ -77,9 +77,25 @@ func sort_bubble(list *[]int) time.Duration{
 	end := time.Now()
 	return end.Sub(start)
 }
+func sort_select(list *[]int) time.Duration{
+	//交换 冒泡
+	L := *list
+	len := len(L)
+
+	start := time.Now()
+	for i := 1; i < len; i++ {
+		for j := 0; j < i; j++ {
+			if L[i] < L[j] {
+				L[i], L[j] = L[j], L[i]
+			}
+		}
+	}
+	end := time.Now()
+	return end.Sub(start)
+}
 
 func sort_what(list *[]int) time.Duration{
-	//
+	//简单 选择
 	var L = *list
 	len := len(L)
 
@@ -101,24 +117,8 @@ func sort_what(list *[]int) time.Duration{
 	return end.Sub(start)
 }
 
-func sort_select(list *[]int) time.Duration{
-	//选择 简单
-	L := *list
-	len := len(L)
 
-	start := time.Now()
-	for i := 1; i < len; i++ {
-		for j := 0; j < i; j++ {
-			if L[i] < L[j] {
-				L[i], L[j] = L[j], L[i]
-			}
-		}
-	}
-	end := time.Now()
-	return end.Sub(start)
-}
-
-func sort_mege(list *[]int) time.Duration{
+func sort_shell(list *[]int) time.Duration{
 	//希尔
 	L := *list
 	len := len(L)
