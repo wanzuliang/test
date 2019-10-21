@@ -11,13 +11,13 @@ func main() {
 
 	var list [] int
 
-	list_add(&list, 10*1000, 0, 10)
+	list_add(&list, 10*10, 0, 10)
 	// list_show(&list)
 
 
 	// T := sort_insert(&list)
-	T := sort_bubble(&list)
-	// T := sort_select(&list)
+	// T := sort_bubble(&list)
+	T := sort_select(&list)
 	// T := sort_shell(&list)
 	
 	fmt.Println(T)
@@ -77,24 +77,8 @@ func sort_bubble(list *[]int) time.Duration{
 	end := time.Now()
 	return end.Sub(start)
 }
+
 func sort_select(list *[]int) time.Duration{
-	//交换 冒泡
-	L := *list
-	len := len(L)
-
-	start := time.Now()
-	for i := 1; i < len; i++ {
-		for j := 0; j < i; j++ {
-			if L[i] < L[j] {
-				L[i], L[j] = L[j], L[i]
-			}
-		}
-	}
-	end := time.Now()
-	return end.Sub(start)
-}
-
-func sort_what(list *[]int) time.Duration{
 	//简单 选择
 	var L = *list
 	len := len(L)
@@ -112,6 +96,23 @@ func sort_what(list *[]int) time.Duration{
 		}
 		L[num] = L[i]
 		L[i] = min
+	}
+	end := time.Now()
+	return end.Sub(start)
+}
+
+func sort_junk(list *[]int) time.Duration{
+	//useless
+	L := *list
+	len := len(L)
+
+	start := time.Now()
+	for i := 1; i < len; i++ {
+		for j := 0; j < i; j++ {
+			if L[i] < L[j] {
+				L[i], L[j] = L[j], L[i]
+			}
+		}
 	}
 	end := time.Now()
 	return end.Sub(start)
